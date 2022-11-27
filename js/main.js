@@ -187,7 +187,9 @@ if (window.innerWidth > 768) {
       
       tabsBtn.forEach(function(btn) {
         btn.classList.remove('servis__btn--active');
+        btn.setAttribute("aria-expanded", false);
         e.currentTarget.classList.add('servis__btn--active');
+        e.currentTarget.setAttribute("aria-expanded", true)
       });
   
       tabsItem.forEach(function(item) {
