@@ -17,7 +17,7 @@ let enableScroll = function() {
 
 
 let focusCatch = function(e) {
-  
+
 }
 
 let focusTrap = function() {
@@ -68,7 +68,7 @@ btns.forEach(function(btn) {
         modals.forEach(function(el) {
             el.classList.remove('modal--visible');
         });
-        
+
         document.querySelector(`[data-target="${path}"]`).classList.add('modal--visible');
         modalOverlay.classList.add('modal__overlay--visible');
         disableScroll();
@@ -174,7 +174,7 @@ validation
     xhr.send(formData);
 
     event.target.reset();
-  }); 
+  });
 
 // tabs
 if (window.innerWidth > 768) {
@@ -184,14 +184,14 @@ if (window.innerWidth > 768) {
   tabsBtn.forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       let path =e.currentTarget.getAttribute('data-path');
-      
+
       tabsBtn.forEach(function(btn) {
         btn.classList.remove('servis__btn--active');
         btn.setAttribute("aria-expanded", false);
         e.currentTarget.classList.add('servis__btn--active');
         e.currentTarget.setAttribute("aria-expanded", true)
       });
-  
+
       tabsItem.forEach(function(item) {
         item.classList.remove('tab--visible');
         document.querySelector(`[data-target="${path}"]`).classList.add('tab--visible');
@@ -209,7 +209,7 @@ if (window.innerWidth <= 768) {
         animate: 300,
         icons: false,
     });
-  
+
   });
 }
 
@@ -221,7 +221,7 @@ const swiper = new Swiper('.swiper', {
     centeredSlides: true,
     direction: 'horizontal',
     loop: true,
-  
+
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -232,17 +232,26 @@ const swiper = new Swiper('.swiper', {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-  
+
     keyboard: {
       enabled: true,
       onlyInViewport: false,
     },
-  
+
     a11y: {
       paginationBulletMessage: 'Перейти к слайду {{index}}'
     },
-  
+
   });
+
+  // иницилизация SimpleBar
+  document.querySelectorAll(".scroll-container").forEach(dropdown => {
+    new SimpleBar(dropdown, {
+    autoHide: false,
+    scrollbarMaxSize: 100,
+    });
+  });
+
 
   // иницилизация yandex карты
 let center = [56.143012068597976,47.191241500000004];
@@ -259,13 +268,13 @@ function init() {
     });
 
 
-    map.controls.remove('geolocationControl'); 
-    map.controls.remove('searchControl'); 
-    map.controls.remove('trafficControl'); 
-    map.controls.remove('fullscreenControl'); 
-    map.controls.remove('rulerControl'); 
-    map.behaviors.disable(['scrollZoom']); 
-    
+    map.controls.remove('geolocationControl');
+    map.controls.remove('searchControl');
+    map.controls.remove('trafficControl');
+    map.controls.remove('fullscreenControl');
+    map.controls.remove('rulerControl');
+    map.behaviors.disable(['scrollZoom']);
+
     map.geoObjects.add(placemark);
 }
 

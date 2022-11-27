@@ -58,6 +58,7 @@
   --bluelight-color: #bdcae4;
   --bluelight-color-tr: rgb(189, 202, 228, 0.3);
   --color-light-blue-translucent: rgba(144, 163, 200, 0.8);
+  /* --accent-color-tr: #fec83fa8; */
 }
 html {
   -webkit-box-sizing: border-box;
@@ -94,6 +95,30 @@ body {
   color: var(--white-color);
   background-color: var(--color-bg);
 }
+
+/*scrollbar*/
+
+/*Firefox*/
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) transparent;
+}
+
+/*Chrome*/
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 20px;
+  border: 3px solid transparent;
+}
+
 .container {
   position: relative;
   margin: 0 auto;
@@ -728,15 +753,35 @@ body {
 }
 .swiper-slide {
   margin-bottom: 3.5rem;
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
+  /* padding: 24px; */
+  padding: 24px 12px 24px 24px;
   border-radius: 1rem;
   width: 350px;
   height: 400px;
   background-color: var(--bluelight-color);
   color: var(--black-color);
   overflow: hidden;
-  overflow-y: auto;
 }
+/* === custom-scroll === */
+.scroll-container {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+}
+.simplebar-scrollbar:before {
+  left: 10px;
+  right: 0;
+  border-radius: 5px;
+  background: var(--color-bg);
+}
+.simplebar-track.simplebar-vertical {
+  width: 16px;
+}
+.simplebar-content-wrapper {
+  padding-right: 12px;
+}
+
 .swiper .swiper-slide-active {
   -webkit-transform: scaleX(1.12) scaleY(1.12);
       -ms-transform: scaleX(1.12) scaleY(1.12);
