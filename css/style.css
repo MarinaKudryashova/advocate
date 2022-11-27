@@ -56,7 +56,9 @@
   --color-bg: #00072c;
   --accent-color: #fec83f;
   --bluelight-color: #bdcae4;
+  --scroll-color: #cccccc;
   --bluelight-color-tr: rgb(189, 202, 228, 0.3);
+  --accent-color-tr: #fec83fa8;
   --color-light-blue-translucent: rgba(144, 163, 200, 0.8);
 }
 html {
@@ -91,6 +93,30 @@ body {
   color: var(--white-color);
   background-color: var(--color-bg);
 }
+
+/*scrollbar*/
+
+/*Firefox*/
+* {
+  scrollbar-width: thin;          /* "auto" or "thin" */
+  scrollbar-color: var(--accent-color) transparent;   /* scroll thumb and track */ 
+}
+
+/*Chrome*/
+*::-webkit-scrollbar {
+  width: 8px;               /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid transparent;  /* creates padding around scroll thumb */
+}
+
 .container {
   position: relative;
   margin: 0 auto;
@@ -630,8 +656,15 @@ display: none;
   background-color: var(--bluelight-color);
   color: var(--black-color);
   overflow: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
+.scroll-container {
+  margin-left: 10px;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+}
+
 .swiper .swiper-slide-active {
   transform: scaleX(1.12) scaleY(1.12);
   transition: transform 0.3s;
