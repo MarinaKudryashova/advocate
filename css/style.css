@@ -56,7 +56,9 @@
   --color-bg: #00072c;
   --accent-color: #fec83f;
   --bluelight-color: #bdcae4;
+  --scroll-color: #cccccc;
   --bluelight-color-tr: rgb(189, 202, 228, 0.3);
+  --accent-color-tr: #fec83fa8;
   --color-light-blue-translucent: rgba(144, 163, 200, 0.8);
   /* --accent-color-tr: #fec83fa8; */
 }
