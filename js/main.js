@@ -56,7 +56,7 @@ function(el) {
 });
 
 // modal-windows
-const btns = document.querySelectorAll('.btn__open');
+const btns = document.querySelectorAll('.btn-open');
 const modalOverlay = document.querySelector('.modal__overlay');
 const modals = document.querySelectorAll('.modal');
 const btnClose = document.querySelector('.btn-close');
@@ -155,11 +155,7 @@ validation
       errorMessage: 'Введите корректный Email',
     },
   ]).onSuccess((event) => {
-    console.log('Validation passes and form submitted', event);
     let formData = new FormData(event.target);
-
-    console.log(...formData);
-
     let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
@@ -269,9 +265,7 @@ function init() {
     });
 
     let placemark = new ymaps.Placemark(center, {}, {
-
     });
-
 
     map.controls.remove('geolocationControl');
     map.controls.remove('searchControl');
@@ -279,7 +273,6 @@ function init() {
     map.controls.remove('fullscreenControl');
     map.controls.remove('rulerControl');
     map.behaviors.disable(['scrollZoom']);
-
     map.geoObjects.add(placemark);
 }
 
