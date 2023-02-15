@@ -255,28 +255,34 @@ const swiper = new Swiper('.swiper', {
 
 
   // иницилизация yandex карты
-let center = [56.143012068597976,47.191241500000004];
+  let flag = 0;
+  window.addEventListener('scroll', function() {
+    let scrollY = window.scrollY;
+    console.log(scrollY)
+    let mapOffset = document.querySelector('.contacts__map').offsetTop;
+    console.log(mapOffset)
+    if((scrollY >= mapOffset-700) & (flag === 0)) {
+      let center = [56.143012068597976,47.191241500000004];
+      function init() {
+          let map = new ymaps.Map('contacts__map', {
+              center: center,
+              zoom: 17,
+              suppressMapOpenBlock: true,
+          });
 
-function init() {
-    let map = new ymaps.Map('contacts__map', {
-        center: center,
-        zoom: 17,
-        suppressMapOpenBlock: true,
-    });
+          let placemark = new ymaps.Placemark(center, {}, {
+          });
 
-    let placemark = new ymaps.Placemark(center, {}, {
-    });
+          map.controls.remove('geolocationControl');
+          map.controls.remove('searchControl');
+          map.controls.remove('trafficControl');
+          map.controls.remove('fullscreenControl');
+          map.controls.remove('rulerControl');
+          map.behaviors.disable(['scrollZoom']);
+          map.geoObjects.add(placemark);
+      }
 
-    map.controls.remove('geolocationControl');
-    map.controls.remove('searchControl');
-    map.controls.remove('trafficControl');
-    map.controls.remove('fullscreenControl');
-    map.controls.remove('rulerControl');
-    map.behaviors.disable(['scrollZoom']);
-    map.geoObjects.add(placemark);
-}
-
-ymaps.ready(init);
-
-
-
+      ymaps.ready(init);
+    }
+    flag = 1;
+  });
