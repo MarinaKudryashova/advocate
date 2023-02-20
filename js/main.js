@@ -57,7 +57,7 @@ function(el) {
 
 // modal-windows
 const btns = document.querySelectorAll('.btn-open');
-const modalOverlay = document.querySelector('.modal__overlay');
+const modalOverlay = document.querySelector('.modals__overlay');
 const modals = document.querySelectorAll('.modal');
 const btnClose = document.querySelector('.btn-close');
 
@@ -70,14 +70,14 @@ btns.forEach(function(btn) {
         });
 
         document.querySelector(`[data-target="${path}"]`).classList.add('modal--visible');
-        modalOverlay.classList.add('modal__overlay--visible');
+        modalOverlay.classList.add('modals__overlay--visible');
         disableScroll();
     });
 });
 
 // закрытие закрытие окна по close
 btnClose.addEventListener('click', function(e) {
-  modalOverlay.classList.remove('modal__overlay--visible');
+  modalOverlay.classList.remove('modals__overlay--visible');
   enableScroll();
   modals.forEach(function(el) {
     el.classList.remove('modal--visible');
@@ -87,7 +87,7 @@ btnClose.addEventListener('click', function(e) {
 // закрытие закрытие окна по click
 modalOverlay.addEventListener('click', function(e) {
     if(e.target == modalOverlay) {
-        modalOverlay.classList.remove('modal__overlay--visible');
+        modalOverlay.classList.remove('modals__overlay--visible');
         enableScroll();
         modals.forEach(function(el) {
            el.classList.remove('modal--visible');
@@ -98,7 +98,7 @@ modalOverlay.addEventListener('click', function(e) {
 // закрытие по esc
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-        modalOverlay.classList.remove('modal__overlay--visible');
+        modalOverlay.classList.remove('modals__overlay--visible');
         enableScroll();
         modals.forEach(function(el) {
            el.classList.remove('modal--visible');
@@ -161,6 +161,7 @@ validation
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
+          ym(92478921,'reachGoal','zakaz')
           console.log('Отправлено');
         }
       }
