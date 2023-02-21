@@ -140,16 +140,6 @@ validation
       },
       errorMessage: 'Введите корректный телефон',
     },
-  ])
-  .addField('#email', [
-    {
-      rule: 'required',
-      errorMessage: 'Email обязателен',
-    },
-    {
-      rule: 'email',
-      errorMessage: 'Введите корректный Email',
-    },
   ]).onSuccess((event) => {
     let formData = new FormData(event.target);
     let xhr = new XMLHttpRequest();
@@ -157,7 +147,6 @@ validation
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          // ym(92478921,'reachGoal','zakaz')
           console.log('Отправлено');
         }
       }
