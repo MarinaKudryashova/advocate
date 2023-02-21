@@ -15,14 +15,10 @@ let enableScroll = function() {
   body.classList.remove('disable-scroll');
 }
 
-
-let focusCatch = function(e) {
-
-}
-
-let focusTrap = function() {
-
-}
+// let focusCatch = function(e) {
+// }
+// let focusTrap = function() {
+// }
 
 burger.addEventListener('click', function() {
   burger.classList.toggle('btn-burger-active');
@@ -161,7 +157,7 @@ validation
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          ym(92478921,'reachGoal','zakaz')
+          // ym(92478921,'reachGoal','zakaz')
           console.log('Отправлено');
         }
       }
