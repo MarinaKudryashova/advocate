@@ -71,23 +71,33 @@ btns.forEach(function(btn) {
     });
 });
 
-// закрытие закрытие окна по close
-btnClose.addEventListener('click', function(e) {
+function closeModal() {
   modalOverlay.classList.remove('modals__overlay--visible');
   enableScroll();
   modals.forEach(function(el) {
-    el.classList.remove('modal--visible');
+     el.classList.remove('modal--visible');
   });
+}
+
+// закрытие закрытие окна по close
+btnClose.addEventListener('click', function(e) {
+  closeModal();
+  // modalOverlay.classList.remove('modals__overlay--visible');
+  // enableScroll();
+  // modals.forEach(function(el) {
+  //   el.classList.remove('modal--visible');
+  // });
 });
 
 // закрытие закрытие окна по click
 modalOverlay.addEventListener('click', function(e) {
     if(e.target == modalOverlay) {
-        modalOverlay.classList.remove('modals__overlay--visible');
-        enableScroll();
-        modals.forEach(function(el) {
-           el.classList.remove('modal--visible');
-        });
+      closeModal();
+        // modalOverlay.classList.remove('modals__overlay--visible');
+        // enableScroll();
+        // modals.forEach(function(el) {
+        //    el.classList.remove('modal--visible');
+        // });
     }
 });
 
@@ -110,6 +120,21 @@ document.addEventListener('keydown', function(e) {
 
 // validate form
 const validation = new JustValidate('.form');
+const modalMessage = document.querySelector('.modal-message');
+const btnmodalMessage = document.querySelector('.modal-message__btn');
+btnmodalMessage.addEventListener('click', function(e) {
+  if(e.target == btnmodalMessage) {
+    closeMessage();
+  }
+});
+let openMessage = function() {
+  modalMessage.classList.add('is-visible');
+}
+let closeMessage = function() {
+  modalMessage.classList.remove('is-visible');
+  modalOverlay.classList.remove('modals__overlay--visible');
+  enableScroll();
+}
 
 validation
   .addField('#name', [
@@ -147,7 +172,12 @@ validation
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          console.log('Отправлено');
+          modals.forEach(function(el) {
+            el.classList.remove('modal--visible');
+          });
+          openMessage();
+
+          setInterval(closeMessage, 3000);
         }
       }
     }
@@ -244,9 +274,7 @@ const swiper = new Swiper('.swiper', {
   let flag = 0;
   window.addEventListener('scroll', function() {
     let scrollY = window.scrollY;
-    console.log(scrollY)
     let mapOffset = document.querySelector('.contacts__map').offsetTop;
-    console.log(mapOffset)
     if((scrollY >= mapOffset-700) & (flag === 0)) {
       let center = [56.143012068597976,47.191241500000004];
       function init() {

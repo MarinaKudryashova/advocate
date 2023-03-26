@@ -474,7 +474,8 @@
   .servis__btn {
       padding: 16px 8px;
   }
-  .servis__icon {
+  .servis__icon,
+  .servis__icon-even {
       width: 50px;
       height: 50px;
   }
@@ -488,6 +489,7 @@
   }
   .swiper-slide {
       width: 290px;
+      min-height: 450px;
   }
   .swiper .swiper-slide-active {
       -webkit-transform: none;
@@ -528,7 +530,7 @@
       margin-bottom: 16px;
       margin-left: 0;
     }
-  .copyright-text {
+  .footer__text-content {
       font-size: 14px;
       width: 100%;
     }
